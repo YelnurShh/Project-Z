@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="kk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СЕМЕЙ: ТАРИХ ІЗІ — ҰРПАҚ ЖАДЫ | Цифрлық тарихи зертхана</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0a0f1d',
+                        panelbg: '#101930',
+                        cardbg: '#16223b',
+                        sand: {
+                            DEFAULT: '#c5a880',
+                            light: '#e2cbab',
+                            dark: '#937852'
+                        },
+                        crimson: '#dc2626',
+                    },
+                    fontFamily: {
+                        title: ['Cinzel', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0f1d;
+            color: #e5e7eb;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        .font-title {
+            font-family: 'Cinzel', serif;
+        }
+        .hero-bg {
+            background: linear-gradient(180deg, rgba(10,15,29,0.4) 0%, rgba(10,15,29,0.85) 70%, rgba(10,15,29,1) 100%), 
+                        url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #101930;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c5a880;
+            border-radius: 3px;
+        }
+        .gold-border {
+            border: 1px solid rgba(197, 168, 128, 0.25);
+        }
+        .gold-border-active {
+            border: 1px solid rgba(197, 168, 128, 0.8);
+        }
+        .glow-red {
+            box-shadow: 0 0 25px rgba(220, 38, 38, 0.25);
+        }
+        .glow-gold {
+            box-shadow: 0 0 20px rgba(197, 168, 128, 0.2);
+        }
+    </style>
+</head>
+<body class="custom-scrollbar selection:bg-sand selection:text-black">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-darkbg/90 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded border border-sand/50 flex items-center justify-center bg-sand/10 text-sand group-hover:border-sand transition">
+                    <i class="fa-solid font-bold text-lg">☢</i>
+                </div>
+                <div>
+                    <span class="font-title text-sm sm:text-base tracking-widest text-sand block font-bold">СЕМЕЙ: ТАРИХ ІЗІ</span>
+                    <span class="text-[10px] text-gray-400 tracking-wider block">ҰРПАҚ ЖАДЫ</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-6 text-xs uppercase tracking-wider text-gray-300 font-medium">
+                <a href="#about" class="hover:text-sand transition">Неге бұл мәселе?</a>
+                <a href="#timeline" class="hover:text-sand transition">Уақыт шежіресі</a>
+                <a href="#map" class="hover:text-sand transition">Цифрлық Карта</a>
+                <a href="#videos" class="hover:text-sand transition text-sand border-b border-sand pb-0.5">Бейне көрсетілім</a>
+                <a href="#stats" class="hover:text-sand transition">Статистика</a>
+                <a href="#people" class="hover:text-sand transition">Адам тағдыры</a>
+                <a href="#quiz" class="hover:text-sand transition">Тест</a>
+                <a href="#ai-historian" class="hover:text-sand transition">ЖИ Тарихшы</a>
+                <a href="#lab" class="hover:text-sand transition">Зертхана</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="#lab" class="hidden sm:inline-flex px-4 py-2 text-xs uppercase tracking-widest font-semibold border border-sand text-sand hover:bg-sand hover:text-black transition">
+                    <i class="fa-solid fa-microscope mr-2 mt-0.5"></i>Зертхана
+                </a>
+                <button id="menu-btn" class="lg:hidden text-gray-300 text-2xl p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-panelbg border-b border-sand/20 px-6 py-6 space-y-4">
+            <a href="#about" class="block text-sm uppercase text-gray-300 hover:text-sand mobile-link">Неге бұл мәселе?</a>
+            <a href="#timeline" class="block text-sm uppercase text-gray-300 hover:text-sand mobile-link">Уақыт шежіресі</a>
+            <a href="#map" class="block text-sm uppercase text-gray-300 hover:text-sand mobile-link">Цифрлық Карта</a>
+            <a href="#videos" class="block text-sm uppercase text-sand hover:text-white mobile-link">Бейне көрсетілім</a>
+            <a href="#stats" class="block text-sm uppercase text-gray-300 hover:text-sand mobile-link">Статистика</a>
+            <a href="#people" class="block text-sm uppercase text-gray-300 hover:text-sand mobile-link">Адам тағдыры</a>
+            <a href="#nevada" class="block text-sm uppercase text-gray-300 hover:text-sand mobile-link">Невада-Семей</a>
+            <a href="#quiz" class="block text-sm uppercase text-gray-300 hover:text-sand mobile-link">Тест</a>
+            <a href="#ai-historian" class="block text-sm uppercase text-gray-300 hover:text-sand mobile-link">ЖИ Тарихшы</a>
+            <a href="#detective" class="block text-sm uppercase text-gray-300 hover:text-sand mobile-link">Тарихи Детектив</a>
+            <a href="#lab" class="block text-sm uppercase text-gray-300 hover:text-sand mobile-link">Зертхана</a>
+            <a href="#sources" class="block text-sm uppercase text-gray-300 hover:text-sand mobile-link">Дереккөздер</a>
+        </div>
+    </header>
+
+    <!-- SECTION 1: HERO -->
+    <section id="hero" class="relative min-h-screen hero-bg flex items-center justify-center pt-24 pb-16 px-4 sm:px-6">
+        <div class="max-w-4xl text-center z-10 space-y-8">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sand/10 border border-sand/40 text-sand text-xs sm:text-sm tracking-widest uppercase font-semibold animate-pulse">
+                <span>Тарихи мәселе бойынша цифрлық өнім</span>
+            </div>
+
+            <h1 class="font-title text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-wider text-white leading-tight">
+                СЕМЕЙ: <br>
+                <span class="text-sand">ТАРИХ ІЗІ — ҰРПАҚ ЖАДЫ</span>
+            </h1>
+
+            <div class="flex items-center justify-center gap-4 text-gray-300 font-title text-lg sm:text-2xl tracking-widest">
+                <span class="h-px w-12 bg-sand/50"></span>
+                <span class="text-sand font-bold">1949 – 1991</span>
+                <span class="h-px w-12 bg-sand/50"></span>
+            </div>
+
+            <p class="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
+                Семей ядролық полигонының тарихын цифрлық зерттеу. <br>
+                <span class="text-gray-400 italic">«Бұл — тек ядролық сынақтар тарихы емес. Бұл — адам, қоғам, табиғат және тарихи жад туралы зерттеу.»</span>
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="#about" class="w-full sm:w-auto px-8 py-4 bg-sand text-black font-semibold text-sm tracking-widest uppercase hover:bg-sand-light transition duration-300 shadow-lg glow-gold">
+                    [ ЗЕРТТЕУДІ БАСТАУ ]
+                </a>
+                <a href="#timeline" class="w-full sm:w-auto px-8 py-4 border border-white/30 text-white font-semibold text-sm tracking-widest uppercase hover:border-sand hover:text-sand transition duration-300">
+                    [ УАҚЫТ ШЕЖІРЕСІ ]
+                </a>
+            </div>
+
+            <div class="pt-12 flex justify-center text-gray-500 animate-bounce">
+                <a href="#about" class="text-xs uppercase tracking-widest flex flex-col items-center gap-2 hover:text-sand transition">
+                    Төмен жылжыту
+                    <i class="fa-solid fa-chevron-down text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: WHY THIS ISSUE -->
+    <section id="about" class="py-24 bg-darkbg border-t border-white/5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="text-center space-y-4">
+                <p class="text-sand text-xs font-semibold uppercase tracking-widest">Цифрлық шолу</p>
+                <h2 class="font-title text-2xl sm:text-4xl text-white font-bold">БІР АЙМАҚ. БІР ТАРИХ. ҰЗАҚ САЛДАР.</h2>
+                <div class="w-16 h-0.5 bg-sand mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-cardbg p-8 gold-border rounded-none relative group hover:-translate-y-2 transition duration-300 hover:border-crimson/80">
+                    <div class="w-14 h-14 rounded-full bg-crimson/10 border border-crimson/40 text-crimson flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        ☢
+                    </div>
+                    <span class="text-xs text-crimson uppercase tracking-widest font-semibold block mb-2">СЫНАҚТАР</span>
+                    <h3 class="font-title text-xl text-white font-bold mb-4">Ядролық сынақтар тарихы</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        40 жылдан астам уақыт бойы жүргізілген атмосфералық, жер үсті және жер асты ядролық жарылыстарының әскери-стратегиялық шежіресі.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-cardbg p-8 gold-border rounded-none relative group hover:-translate-y-2 transition duration-300 hover:border-sand">
+                    <div class="w-14 h-14 rounded-full bg-sand/10 border border-sand/40 text-sand flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        👥
+                    </div>
+                    <span class="text-xs text-sand uppercase tracking-widest font-semibold block mb-2">АДАМ</span>
+                    <h3 class="font-title text-xl text-white font-bold mb-4">Халық тағдыры және қоғам</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Миллионнан астам жергілікті тұрғынның денсаулығына, ұрпақ өміршеңдігіне тиген радиациялық әсер және азаматтық қарсылық тарихы.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-cardbg p-8 gold-border rounded-none relative group hover:-translate-y-2 transition duration-300 hover:border-sand">
+                    <div class="w-14 h-14 rounded-full bg-sand/10 border border-sand/40 text-sand flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        🌍
+                    </div>
+                    <span class="text-xs text-sand uppercase tracking-widest font-semibold block mb-2">ЖЕР</span>
+                    <h3 class="font-title text-xl text-white font-bold mb-4">Қоршаған орта және кеңістік</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Дегелең, Шаған, Балапан алаңдарындағы экологиялық трагедия, топырақ пен судың радиоактивті ластану масштабы.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: TIMELINE -->
+    <section id="timeline" class="py-24 bg-panelbg border-t border-white/5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="text-center space-y-4">
+                <p class="text-sand text-xs font-semibold uppercase tracking-widest">Тарихи шежіре</p>
+                <h2 class="font-title text-3xl sm:text-5xl text-white font-bold">1949 → 1991</h2>
+                <p class="text-gray-400 text-sm max-w-xl mx-auto">Интерактивті уақыт шежіресі: Тиісті жылды таңдап, оқиғаның тарихи маңызын зерттеңіз.</p>
+                <div class="w-16 h-0.5 bg-sand mx-auto"></div>
+            </div>
+
+            <!-- Timeline Navigation Buttons -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <button onclick="showTimeline('1949')" id="tbtn-1949" class="timeline-tab active p-4 text-center border border-sand bg-sand text-black font-bold font-title transition">
+                    1949
+                    <span class="block text-[11px] font-sans font-normal opacity-90">Алғашқы сынақ</span>
+                </button>
+                <button onclick="showTimeline('1950')" id="tbtn-1950" class="timeline-tab p-4 text-center border border-white/20 bg-cardbg text-white font-bold font-title hover:border-sand transition">
+                    1950–1980
+                    <span class="block text-[11px] font-sans font-normal opacity-70">Сынақтар кезеңі</span>
+                </button>
+                <button onclick="showTimeline('1989')" id="tbtn-1989" class="timeline-tab p-4 text-center border border-white/20 bg-cardbg text-white font-bold font-title hover:border-sand transition">
+                    1989
+                    <span class="block text-[11px] font-sans font-normal opacity-70">Невада–Семей</span>
+                </button>
+                <button onclick="showTimeline('1991')" id="tbtn-1991" class="timeline-tab p-4 text-center border border-crimson/50 bg-crimson/10 text-red-400 font-bold font-title hover:bg-crimson/20 transition">
+                    1991 ★
+                    <span class="block text-[11px] font-sans font-normal opacity-90">Полигонның жабылуы</span>
+                </button>
+            </div>
+
+            <!-- Timeline Content Display Box -->
+            <div class="max-w-4xl mx-auto bg-cardbg p-8 sm:p-12 border border-sand/30 min-h-[260px] flex items-center" id="timeline-content">
+                <!-- Dynamic Content Loaded via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: DIGITAL MAP -->
+    <section id="map" class="py-24 bg-darkbg border-t border-white/5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center space-y-4">
+                <p class="text-sand text-xs font-semibold uppercase tracking-widest">Географиялық зертхана</p>
+                <h2 class="font-title text-2xl sm:text-4xl text-white font-bold">СЕМЕЙ ПОЛИГОНЫ: КАРТАДАҒЫ ТАРИХ</h2>
+                <p class="text-gray-400 text-sm max-w-xl mx-auto">Интерактивті карта макеті: Нүктелерді басып, нысанның тарихи рөлін қараңыз.</p>
+                <div class="w-16 h-0.5 bg-sand mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Visual Interactive Map Area -->
+                <div class="lg:col-span-7 bg-panelbg p-6 gold-border relative min-h-[380px] sm:min-h-[450px] flex items-center justify-center overflow-hidden">
+                    <!-- Grid Lines overlay -->
+                    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293715_1px,transparent_1px),linear-gradient(to_bottom,#1f293715_1px,transparent_1px)] bg-[size:2rem_2rem]"></div>
+                    
+                    <!-- SVG Contour Placeholder Map -->
+                    <svg class="w-full h-full absolute inset-0 opacity-20 text-sand" viewBox="0 0 600 400" fill="none" stroke="currentColor">
+                        <path d="M50,100 Q150,50 300,120 T550,200 Q450,350 250,320 Z" stroke-width="2" stroke-dasharray="4 4" />
+                        <path d="M120,180 Q220,150 350,220" stroke-width="1" />
+                    </svg>
+
+                    <!-- Interactive Markers -->
+                    <div class="relative w-full h-80">
+                        <!-- Semey -->
+                        <button onclick="selectMapLocation('semey')" class="map-marker absolute top-[25%] left-[65%] -translate-x-1/2 -translate-y-1/2 group focus:outline-none">
+                            <span class="relative flex h-5 w-5">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sand opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-5 w-5 bg-sand text-black font-bold text-[10px] items-center justify-center">1</span>
+                            </span>
+                            <span class="absolute top-6 -left-8 bg-darkbg/90 text-sand text-[11px] font-semibold px-2 py-0.5 border border-sand/40 whitespace-nowrap">Семей қ.</span>
+                        </button>
+
+                        <!-- Kurchatov -->
+                        <button onclick="selectMapLocation('kurchatov')" class="map-marker absolute top-[40%] left-[45%] -translate-x-1/2 -translate-y-1/2 group focus:outline-none">
+                            <span class="relative flex h-5 w-5">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sand opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-5 w-5 bg-sand text-black font-bold text-[10px] items-center justify-center">2</span>
+                            </span>
+                            <span class="absolute top-6 -left-10 bg-darkbg/90 text-sand text-[11px] font-semibold px-2 py-0.5 border border-sand/40 whitespace-nowrap">Курчатов (Орталық)</span>
+                        </button>
+
+                        <!-- Degelen -->
+                        <button onclick="selectMapLocation('degelen')" class="map-marker absolute top-[60%] left-[35%] -translate-x-1/2 -translate-y-1/2 group focus:outline-none">
+                            <span class="relative flex h-5 w-5">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-crimson opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-5 w-5 bg-crimson text-white font-bold text-[10px] items-center justify-center">3</span>
+                            </span>
+                            <span class="absolute top-6 -left-8 bg-darkbg/90 text-crimson text-[11px] font-semibold px-2 py-0.5 border border-crimson/40 whitespace-nowrap">Дегелең</span>
+                        </button>
+
+                        <!-- Shagan -->
+                        <button onclick="selectMapLocation('shagan')" class="map-marker absolute top-[30%] left-[25%] -translate-x-1/2 -translate-y-1/2 group focus:outline-none">
+                            <span class="relative flex h-5 w-5">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sand opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-5 w-5 bg-sand text-black font-bold text-[10px] items-center justify-center">4</span>
+                            </span>
+                            <span class="absolute top-6 -left-6 bg-darkbg/90 text-sand text-[11px] font-semibold px-2 py-0.5 border border-sand/40 whitespace-nowrap">Шаған</span>
+                        </button>
+
+                        <!-- Polygon Zone -->
+                        <button onclick="selectMapLocation('polygon')" class="map-marker absolute top-[55%] left-[55%] -translate-x-1/2 -translate-y-1/2 group focus:outline-none">
+                            <span class="relative flex h-6 w-6">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-crimson opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-6 w-6 bg-crimson text-white font-bold text-[11px] items-center justify-center">☢</span>
+                            </span>
+                            <span class="absolute top-7 -left-12 bg-darkbg/90 text-crimson text-[11px] font-semibold px-2 py-0.5 border border-crimson/40 whitespace-nowrap">Полигон аумағы</span>
+                        </button>
+                    </div>
+
+                    <div class="absolute bottom-3 right-3 text-[10px] text-gray-500 bg-black/60 px-2 py-1">
+                        Нүктені таңдап, ақпаратты ашыңыз
+                    </div>
+                </div>
+
+                <!-- Map Info Sidebar -->
+                <div class="lg:col-span-5 bg-cardbg p-8 gold-border space-y-6 min-h-[380px]" id="map-info-panel">
+                    <!-- Dynamic Location Content Loaded via JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4.5: VIDEO DOCUMENTARY GALLERY -->
+    <section id="videos" class="py-24 bg-panelbg border-t border-white/5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center space-y-4">
+                <p class="text-sand text-xs font-semibold uppercase tracking-widest">Тарихи Бейнемұрағат</p>
+                <h2 class="font-title text-3xl sm:text-5xl text-white font-bold">СЕМЕЙ ПОЛИГОНЫ: ДЕРЕКТІ БЕЙНЕ КӨРСЕТІЛІМ</h2>
+                <p class="text-gray-400 text-sm max-w-2xl mx-auto">Оқушыларға арналған мұрағаттық бейнематериалдар, Шаған «Атом көлі» жарылысының шежіресі және куәгерлердің бейнедеректері.</p>
+                <div class="w-16 h-0.5 bg-sand mx-auto"></div>
+            </div>
+
+            <!-- Video Player & Chapter Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Main Video Embed Player -->
+                <div class="lg:col-span-8 bg-cardbg gold-border p-4 sm:p-6 space-y-4">
+                    <div class="relative w-full overflow-hidden rounded border border-white/10 bg-black aspect-video">
+                        <iframe id="main-video-iframe" 
+                            class="w-full h-full" 
+                            src="https://www.youtube.com/embed/jTC78fzJAek?enablejsapi=1" 
+                            title="Семей полигоны бейнедерегі" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <!-- Video Details Title & Description -->
+                    <div class="space-y-3 pt-2">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <span id="video-badge" class="px-3 py-1 bg-crimson/20 border border-crimson/50 text-crimson text-[11px] font-bold uppercase">
+                                Атом көлі (Шаған) — 10 млн м³ топырақ
+                            </span>
+                            <span id="video-duration" class="text-xs font-mono text-gray-400">
+                                <i class="fa-solid fa-clock mr-1 text-sand"></i> Тарихи бейнедерек
+                            </span>
+                        </div>
+                        <h3 id="video-title" class="font-title text-xl sm:text-2xl text-white font-bold">
+                            Шаған «Атом көлі» жарылысы және полигон зардаптары
+                        </h3>
+                        <p id="video-desc" class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                            «Жарылыс жер қойнауынан 10 миллион текше метрден астам топырақты аспанға ыршытып жіберді...» Өнеркәсіптік ядролық жарылыс нәтижесінде пайда болған жасанды Шаған «Атом көлі» туралы сирек мұрағаттық шежіре.
+                        </p>
+                    </div>
+
+                    <!-- Student Study Note / Transcript box -->
+                    <div class="p-4 bg-darkbg border-l-2 border-sand space-y-2 text-xs">
+                        <div class="flex items-center justify-between text-sand font-bold">
+                            <span><i class="fa-solid fa-book-bookmark mr-2"></i> Оқушыға арналған сұрақ:</span>
+                            <span class="text-[10px] text-gray-400 font-normal">Тарихи зертхана тапсырмасы</span>
+                        </div>
+                        <p id="video-task" class="text-gray-300">
+                            Бейнебаянды қарап шығып, ойланыңыз: Бейбіт мақсатта өнеркәсіптік жарылыстар жасаудың халық пен экологияға тигізген негізгі зияны қандай болды?
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Playlist / Video Selection List -->
+                <div class="lg:col-span-4 space-y-4">
+                    <h3 class="font-title text-base text-sand font-bold uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-film"></i> Бейнебаян тараулары
+                    </h3>
+
+                    <div class="space-y-3">
+                        <!-- Chapter 1 -->
+                        <button onclick="playVideo('jTC78fzJAek', 'Шаған «Атом көлі» жарылысы мен полигон зардаптары', '«Жарылыс жер қойнауынан 10 миллион текше метрден астам топырақты аспанға ыршытып жіберді...» Өнеркәсіптік ядролық жарылыс нәтижесінде пайда болған Атом көлі туралы сирек мұрағаттық шежіре.', 'Атом көлі (Шаған) — 10 млн м³ топырақ', 'Бейнебаянды қарап шығып, ойланыңыз: Бейбіт мақсатта өнеркәсіптік жарылыстар жасаудың халық пен экологияға тигізген негізгі зияны қандай болды?')" 
+                            class="v-card active w-full p-3 bg-cardbg border border-sand flex gap-3 text-left hover:border-sand transition group">
+                            <div class="w-24 h-16 bg-black relative flex-shrink-0 border border-white/10 overflow-hidden flex items-center justify-center">
+                                <i class="fa-solid fa-circle-play text-sand text-2xl group-hover:scale-110 transition"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <span class="text-[10px] text-sand uppercase font-bold block">1-Тарау</span>
+                                <h4 class="text-xs font-bold text-white group-hover:text-sand transition line-clamp-2">Шаған «Атом көлі» шежіресі</h4>
+                                <span class="text-[10px] text-gray-400 block">Ядролық жарылыс</span>
+                            </div>
+                        </button>
+
+                        <!-- Chapter 2 -->
+                        <button onclick="playVideo('jTC78fzJAek', '1949 жыл: Алғашқы плутонийлік атом бомбасын сынау', '1949 жылғы 29 тамызда Семей полигонында ашық әуеде алғашқы «RDS-1» ядролық жарылысы өтті. Бұл бейнедеректе алғашқы сынақтың салдарын зерттеген ғылыми деректер баяндалады.', '1949 ж. Алғашқы сынақ', 'Тапсырма: Ашық әуедегі жарылыстардың жер асты жарылыстарынан айырмашылығы мен қауіптілігі неде?')" 
+                            class="v-card w-full p-3 bg-cardbg border border-white/10 flex gap-3 text-left hover:border-sand transition group">
+                            <div class="w-24 h-16 bg-black relative flex-shrink-0 border border-white/10 overflow-hidden flex items-center justify-center">
+                                <i class="fa-solid fa-radiation text-crimson text-2xl group-hover:scale-110 transition"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <span class="text-[10px] text-crimson uppercase font-bold block">2-Тарау</span>
+                                <h4 class="text-xs font-bold text-white group-hover:text-sand transition line-clamp-2">1949 ж. Алғашқы ядролық сынақ</h4>
+                                <span class="text-[10px] text-gray-400 block">Тарихи шежіре</span>
+                            </div>
+                        </button>
+
+                        <!-- Chapter 3 -->
+                        <button onclick="playVideo('jTC78fzJAek', '«Невада-Семей» халықаралық ядроға қарсы қозғалысы', '1989 жылы Олжас Сүлейменов бастаған азаматтық қарсылық қозғалысы. Халықтың бірігуі арқылы ядролық сынақтарды тоқтату күресі.', '1989 ж. Невада-Семей', 'Тапсырма: «Невада-Семей» қозғалысының жеңіске жетуінің негізгі факторларын атаңыз.')" 
+                            class="v-card w-full p-3 bg-cardbg border border-white/10 flex gap-3 text-left hover:border-sand transition group">
+                            <div class="w-24 h-16 bg-black relative flex-shrink-0 border border-white/10 overflow-hidden flex items-center justify-center">
+                                <i class="fa-solid fa-users-line text-sand text-2xl group-hover:scale-110 transition"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <span class="text-[10px] text-sand uppercase font-bold block">3-Тарау</span>
+                                <h4 class="text-xs font-bold text-white group-hover:text-sand transition line-clamp-2">«Невада-Семей» азаматтық майданы</h4>
+                                <span class="text-[10px] text-gray-400 block">Азаматтық қарсылық</span>
+                            </div>
+                        </button>
+
+                        <!-- Chapter 4 -->
+                        <button onclick="playVideo('jTC78fzJAek', '29 Тамыз 1991: Семей полигонын мәңгілікке жабу Жарлығы', 'Қазақ КСР Президенті Н.Ә. Назарбаевтың №409 Жарлығымен полигонның жабылуы және ядросыз әлемге қадам жасау тарихы.', '29 тамыз 1991 — №409 Жарлық', 'Тапсырма: 29 тамыз күнінің халықаралық деңгейдегі тарихи маңызын қорытындылаңыз.')" 
+                            class="v-card w-full p-3 bg-cardbg border border-white/10 flex gap-3 text-left hover:border-sand transition group">
+                            <div class="w-24 h-16 bg-black relative flex-shrink-0 border border-white/10 overflow-hidden flex items-center justify-center">
+                                <i class="fa-solid fa-file-contract text-green-400 text-2xl group-hover:scale-110 transition"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <span class="text-[10px] text-green-400 uppercase font-bold block">4-Тарау</span>
+                                <h4 class="text-xs font-bold text-white group-hover:text-sand transition line-clamp-2">29 Тамыз 1991 — Тарихи Жарлық</h4>
+                                <span class="text-[10px] text-gray-400 block">Полигонның жабылуы</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: NUMBERS SPEAK -->
+    <section id="stats" class="py-24 bg-panelbg border-t border-white/5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="text-center space-y-4">
+                <p class="text-sand text-xs font-semibold uppercase tracking-widest">Деректер мен статистика</p>
+                <h2 class="font-title text-3xl sm:text-5xl text-white font-bold">ТАРИХТЫ САНМЕН КӨР</h2>
+                <div class="w-16 h-0.5 bg-sand mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Stat 1 -->
+                <div class="bg-cardbg p-8 gold-border text-center space-y-4 relative group hover:border-sand transition">
+                    <span class="font-title text-5xl sm:text-6xl font-black text-sand block tracking-tight">1949</span>
+                    <p class="text-white font-semibold text-lg">Алғашқы сынақ жылы</p>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        29 тамызда КСРО-ның «RDS-1» атаулы тұңғыш атом бомбасы ашық әуеде жарылды.
+                    </p>
+                    <button onclick="openModal('source-1949')" class="inline-flex items-center gap-1.5 text-xs text-sand/80 hover:text-sand underline pt-2">
+                        <i class="fa-solid fa-file-lines text-[10px]"></i> Дереккөзді қарау
+                    </button>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="bg-cardbg p-8 gold-border text-center space-y-4 relative group hover:border-crimson transition">
+                    <span class="font-title text-5xl sm:text-6xl font-black text-crimson block tracking-tight">456</span>
+                    <p class="text-white font-semibold text-lg">Ядролық сынақтар саны</p>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        116 әуе/жер үсті және 340 жер асты ядролық жарылысы ресми түрде тіркелген.
+                    </p>
+                    <button onclick="openModal('source-456')" class="inline-flex items-center gap-1.5 text-xs text-sand/80 hover:text-sand underline pt-2">
+                        <i class="fa-solid fa-file-lines text-[10px]"></i> Дереккөзді қарау
+                    </button>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="bg-cardbg p-8 gold-border text-center space-y-4 relative group hover:border-sand transition">
+                    <span class="font-title text-5xl sm:text-6xl font-black text-sand block tracking-tight">1991</span>
+                    <p class="text-white font-semibold text-lg">Полигон жабылған жыл</p>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        29 тамызда Н.Ә. Назарбаевтың №409 тарихи Жарлығымен полигон мәңгілікке жабылды.
+                    </p>
+                    <button onclick="openModal('source-1991')" class="inline-flex items-center gap-1.5 text-xs text-sand/80 hover:text-sand underline pt-2">
+                        <i class="fa-solid fa-file-lines text-[10px]"></i> Дереккөзді қарау
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: HUMAN FATE -->
+    <section id="people" class="py-24 bg-darkbg border-t border-white/5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="text-center space-y-4">
+                <p class="text-sand text-xs font-semibold uppercase tracking-widest">Адам тарихы</p>
+                <h2 class="font-title text-3xl sm:text-5xl text-white font-bold">СТАТИСТИКАНЫҢ АРТЫНДА — АДАМ</h2>
+                <p class="text-gray-400 text-sm max-w-xl mx-auto">Полигон зардабын бастан өткерген тұлғалар мен кәсіп иелерінің көзқарасы.</p>
+                <div class="w-16 h-0.5 bg-sand mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Person 1 -->
+                <div class="bg-cardbg gold-border p-6 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="h-44 bg-gray-800 flex items-center justify-center text-4xl text-sand/40 border border-white/10 relative overflow-hidden">
+                            <i class="fa-solid fa-user-injured text-5xl"></i>
+                            <span class="absolute bottom-2 left-2 bg-black/80 px-2 py-0.5 text-[10px] text-sand uppercase font-bold">ТҰРҒЫН</span>
+                        </div>
+                        <h3 class="font-title text-lg text-white font-bold">Жергілікті тұрғындар</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            «Сынақ болар алдында үйден шығуды бұйыратын. Жер сілкініп, аспанды саңырауқұлақ тәрізді түтін басатын...»
+                        </p>
+                    </div>
+                    <button onclick="openModal('person-resident')" class="w-full py-2 border border-sand/40 text-sand text-xs uppercase font-semibold hover:bg-sand hover:text-black transition">
+                        Толығырақ
+                    </button>
+                </div>
+
+                <!-- Person 2 -->
+                <div class="bg-cardbg gold-border p-6 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="h-44 bg-gray-800 flex items-center justify-center text-4xl text-sand/40 border border-white/10 relative overflow-hidden">
+                            <i class="fa-solid fa-flask text-5xl"></i>
+                            <span class="absolute bottom-2 left-2 bg-black/80 px-2 py-0.5 text-[10px] text-sand uppercase font-bold">ҒАЛЫМ</span>
+                        </div>
+                        <h3 class="font-title text-lg text-white font-bold">Академик И.В. Курчатов</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            КСРО атом жобасының ғылыми жетекшісі. Курчатов қаласында құпия зертханаларды басқарды.
+                        </p>
+                    </div>
+                    <button onclick="openModal('person-scientist')" class="w-full py-2 border border-sand/40 text-sand text-xs uppercase font-semibold hover:bg-sand hover:text-black transition">
+                        Толығырақ
+                    </button>
+                </div>
+
+                <!-- Person 3 -->
+                <div class="bg-cardbg gold-border p-6 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="h-44 bg-gray-800 flex items-center justify-center text-4xl text-sand/40 border border-white/10 relative overflow-hidden">
+                            <i class="fa-solid fa-user-doctor text-5xl"></i>
+                            <span class="absolute bottom-2 left-2 bg-black/80 px-2 py-0.5 text-[10px] text-sand uppercase font-bold">ДӘРІГЕР</span>
+                        </div>
+                        <h3 class="font-title text-lg text-white font-bold">Бахия Атшабаров</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            Қазақ өлкелік патология институтының директоры. Радиацияның адам ағзасына тигізетін зиянын алғаш дәлелдеген.
+                        </p>
+                    </div>
+                    <button onclick="openModal('person-doctor')" class="w-full py-2 border border-sand/40 text-sand text-xs uppercase font-semibold hover:bg-sand hover:text-black transition">
+                        Толығырақ
+                    </button>
+                </div>
+
+                <!-- Person 4 -->
+                <div class="bg-cardbg gold-border p-6 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="h-44 bg-gray-800 flex items-center justify-center text-4xl text-sand/40 border border-white/10 relative overflow-hidden">
+                            <i class="fa-solid fa-bullhorn text-5xl"></i>
+                            <span class="absolute bottom-2 left-2 bg-black/80 px-2 py-0.5 text-[10px] text-sand uppercase font-bold">ҚОҒАМ БЕЛСЕНДІСІ</span>
+                        </div>
+                        <h3 class="font-title text-lg text-white font-bold">Олжас Сүлейменов</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            Ақын, «Невада-Семей» халықаралық ядроға қарсы қозғалысының көшбасшысы, қоғам қайраткері.
+                        </p>
+                    </div>
+                    <button onclick="openModal('person-activist')" class="w-full py-2 border border-sand/40 text-sand text-xs uppercase font-semibold hover:bg-sand hover:text-black transition">
+                        Толығырақ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: NEVADA-SEMEY MOVEMENT -->
+    <section id="nevada" class="py-24 bg-panelbg border-t border-white/5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="text-center space-y-4">
+                <p class="text-sand text-xs font-semibold uppercase tracking-widest">Азаматтық қарсылық — 1989</p>
+                <h2 class="font-title text-3xl sm:text-5xl text-white font-bold">ТЫНЫШТЫҚТЫ ТАЛАП ЕТКЕН ДАУЫС</h2>
+                <p class="text-gray-400 text-sm max-w-xl mx-auto font-light">«Невада–Семей» қозғалысы — миллиондаған адамның бейбітшілік жолындағы күресі.</p>
+                <div class="w-16 h-0.5 bg-sand mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-cardbg p-8 border border-white/10 hover:border-sand transition space-y-4">
+                    <span class="text-sand text-xs uppercase font-bold tracking-widest block">01 / ҚОҒАМ</span>
+                    <h3 class="font-title text-xl text-white font-bold">Халықтық бастама</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        1989 жылы 28 ақпанда Жазушылар одағының ғимаратында басталған жиын қозғалыстың бастау нүктесі болды. Аз уақыт ішінде 2 миллионнан астам қол жиналды.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-cardbg p-8 border border-white/10 hover:border-sand transition space-y-4">
+                    <span class="text-sand text-xs uppercase font-bold tracking-widest block">02 / ҚОЗҒАЛЫС</span>
+                    <h3 class="font-title text-xl text-white font-bold">Халықаралық солидарлық</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        АҚШ, Жапония, Ресей және басқа да елдердің ядроға қарсы ұйымдарымен тығыз байланыс орнатылып, Семей полигонындағы 18 сынақтың 11-і тоқтатылды.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-cardbg p-8 border border-white/10 hover:border-sand transition space-y-4">
+                    <span class="text-sand text-xs uppercase font-bold tracking-widest block">03 / ҮНДЕУ</span>
+                    <h3 class="font-title text-xl text-white font-bold">«Полигондар жабылсын!»</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Қозғалыстың басты ұраны — барлық әлемдік ядролық сынақ алаңдарын жабу және атом қаруын жаппай жою болды.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: 29 AUGUST 1991 (BIG HERO SECTION) -->
+    <section class="py-32 bg-gradient-to-b from-darkbg via-[#060a14] to-darkbg border-y border-sand/30 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-crimson/5 pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto space-y-8 relative z-10">
+            <span class="text-crimson font-mono text-sm tracking-widest uppercase font-bold border border-crimson/40 px-4 py-1.5 inline-block">Тарихи Шешім</span>
+            
+            <h2 class="font-title text-5xl sm:text-7xl md:text-8xl font-black text-sand tracking-widest">29.08.1991</h2>
+            
+            <h3 class="font-title text-2xl sm:text-4xl text-white font-bold">СЕМЕЙ ПОЛИГОНЫ ЖАБЫЛДЫ</h3>
+            
+            <p class="text-gray-300 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+                1991 жылғы 29 тамызда Қазақ КСР Президенті Нұрсұлтан Назарбаевтың №409 Жарлығымен Семей ядролық сынақ полигоны ресми түрде жабылды.
+            </p>
+
+            <button onclick="toggleAugustDetails()" class="px-8 py-4 bg-crimson text-white font-semibold text-xs sm:text-sm tracking-widest uppercase hover:bg-red-700 transition shadow-lg glow-red">
+                [ НЕГЕ БҰЛ МАҢЫЗДЫ? ]
+            </button>
+
+            <!-- Expandable 3 cards -->
+            <div id="august-details" class="hidden grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 text-left">
+                <div class="bg-cardbg p-6 border border-sand/30">
+                    <h4 class="font-title text-sand font-bold mb-2">ТАРИХИ МАҢЫЗЫ</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">Адамзат тарихында тұңғыш рет халықтың еркімен және мемлекет шешімімен ядролық полигон жабылды.</p>
+                </div>
+                <div class="bg-cardbg p-6 border border-sand/30">
+                    <h4 class="font-title text-sand font-bold mb-2">ҚОҒАМДЫҚ МАҢЫЗЫ</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">Семей аймағы тұрғындарының денсаулығы мен экологияны қалпына келтірудің жаңа кезеңі басталды.</p>
+                </div>
+                <div class="bg-cardbg p-6 border border-sand/30">
+                    <h4 class="font-title text-sand font-bold mb-2">ХАЛЫҚАРАЛЫҚ МАҢЫЗЫ</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">БҰҰ 29 тамызды «Ядролық сынақтарға қарсы іс-қимылдың халықаралық күні» деп жариялады.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: INTERACTIVE QUIZ -->
+    <section id="quiz" class="py-24 bg-panelbg border-t border-white/5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto space-y-12">
+            <div class="text-center space-y-4">
+                <p class="text-sand text-xs font-semibold uppercase tracking-widest">Өз біліміңді тексер</p>
+                <h2 class="font-title text-3xl sm:text-4xl text-white font-bold">ДЕРЕК ПЕ, МИФ ПЕ?</h2>
+                <div class="w-16 h-0.5 bg-sand mx-auto"></div>
+            </div>
+
+            <!-- Quiz Box Container -->
+            <div id="quiz-container" class="bg-cardbg p-8 gold-border space-y-8">
+                <!-- Question Number -->
+                <div class="flex justify-between items-center text-xs text-gray-400 font-mono border-b border-white/10 pb-4">
+                    <span>СҰРАҚ <span id="quiz-current-num" class="text-sand font-bold">1</span> / 5</span>
+                    <span>ҰПАЙ: <span id="quiz-score" class="text-sand font-bold">0</span></span>
+                </div>
+
+                <!-- Question Statement -->
+                <div class="space-y-4 min-h-[90px]">
+                    <h3 id="quiz-statement" class="text-lg sm:text-xl font-medium text-white leading-relaxed">
+                        <!-- Loaded dynamically -->
+                    </h3>
+                </div>
+
+                <!-- Action Buttons -->
+                <div id="quiz-actions" class="grid grid-cols-2 gap-4">
+                    <button onclick="answerQuiz(true)" class="py-4 border border-sand/60 bg-sand/10 hover:bg-sand hover:text-black text-sand font-bold text-sm tracking-widest uppercase transition">
+                        [ ДЕРЕК ]
+                    </button>
+                    <button onclick="answerQuiz(false)" class="py-4 border border-white/20 bg-white/5 hover:bg-white hover:text-black text-white font-bold text-sm tracking-widest uppercase transition">
+                        [ МИФ ]
+                    </button>
+                </div>
+
+                <!-- Feedback Area -->
+                <div id="quiz-feedback" class="hidden p-4 border rounded text-xs leading-relaxed">
+                    <!-- Feedback text -->
+                </div>
+
+                <div id="quiz-next-btn-wrap" class="hidden flex justify-end">
+                    <button onclick="nextQuizQuestion()" class="px-6 py-2 bg-sand text-black font-bold text-xs uppercase tracking-wider">
+                        Келесі сұрақ →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Result View -->
+            <div id="quiz-result" class="hidden bg-cardbg p-8 gold-border text-center space-y-6">
+                <h3 class="font-title text-2xl text-sand font-bold">ТЕСТ АЯҚТАЛДЫ!</h3>
+                <p class="text-white text-lg">Сіздің нәтижеңіз: <span id="final-score" class="text-sand font-bold text-2xl">0</span> / 5</p>
+                <p id="quiz-eval-text" class="text-gray-400 text-sm max-w-md mx-auto"></p>
+                <button onclick="restartQuiz()" class="px-8 py-3 bg-sand text-black font-bold text-xs uppercase tracking-widest hover:bg-sand-light transition">
+                    Қайта тапсыру
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: AI HISTORIAN -->
+    <section id="ai-historian" class="py-24 bg-darkbg border-t border-white/5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <div class="text-center space-y-4">
+                <p class="text-sand text-xs font-semibold uppercase tracking-widest">Интерактивті Көмекші</p>
+                <h2 class="font-title text-3xl sm:text-4xl text-white font-bold">ЖАСАНДЫ ИНТЕЛЛЕКТ ТАРИХШЫМЕН СӨЙЛЕС</h2>
+                <p class="text-gray-400 text-sm">Семей полигонының тарихы бойынша кез келген сұрақ қойыңыз.</p>
+                <div class="w-16 h-0.5 bg-sand mx-auto"></div>
+            </div>
+
+            <!-- Chatbot Interface Window -->
+            <div class="bg-cardbg border border-sand/30 rounded-none shadow-2xl flex flex-col h-[520px]">
+                <!-- Chat Header -->
+                <div class="p-4 bg-panelbg border-b border-white/10 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-sand/20 border border-sand text-sand flex items-center justify-center text-xs font-bold">ЖИ</div>
+                        <div>
+                            <span class="text-sm font-bold text-white block">ЖИ Тарихшы-Кеңесші</span>
+                            <span class="text-[10px] text-green-400 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Белсенді
+                            </span>
+                        </div>
+                    </div>
+                    <span class="text-[11px] text-gray-500 font-mono">Цифрлық мұрағат v2.6</span>
+                </div>
+
+                <!-- Chat History Window -->
+                <div id="chat-box" class="flex-1 p-4 overflow-y-auto space-y-4 custom-scrollbar">
+                    <div class="flex items-start gap-3">
+                        <div class="w-7 h-7 rounded-full bg-sand/20 text-sand flex items-center justify-center text-xs font-bold flex-shrink-0 mt-1">ЖИ</div>
+                        <div class="bg-panelbg border border-white/10 p-3 max-w-[85%] text-xs text-gray-200 space-y-2">
+                            <p>Сәлеметсіз бе! Мен — Семей ядролық полигоны тарихына маманданған жасанды интеллект тарихшысымын. Қандай сұрағыңыз бар?</p>
+                            <p class="text-[10px] text-sand/80 italic">«Жасанды интеллект жауабын тарихи дереккөздермен салыстыруды ұмытпаңыз.»</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Prompts Buttons -->
+                <div class="p-3 bg-panelbg/60 border-t border-white/5 overflow-x-auto flex gap-2 text-xs">
+                    <button onclick="askAI('Семей полигоны қашан ашылды?')" class="whitespace-nowrap px-3 py-1 bg-white/5 border border-white/10 hover:border-sand text-gray-300 hover:text-sand text-[11px]">
+                        Семей полигоны қашан ашылды?
+                    </button>
+                    <button onclick="askAI('Алғашқы ядролық сынақ қашан болды?')" class="whitespace-nowrap px-3 py-1 bg-white/5 border border-white/10 hover:border-sand text-gray-300 hover:text-sand text-[11px]">
+                        Алғашқы сынақ қашан болды?
+                    </button>
+                    <button onclick="askAI('Невада–Семей қозғалысы қандай рөл атқарды?')" class="whitespace-nowrap px-3 py-1 bg-white/5 border border-white/10 hover:border-sand text-gray-300 hover:text-sand text-[11px]">
+                        Невада-Семей рөлі?
+                    </button>
+                    <button onclick="askAI('29 тамыздың тарихи маңызы қандай?')" class="whitespace-nowrap px-3 py-1 bg-white/5 border border-white/10 hover:border-sand text-gray-300 hover:text-sand text-[11px]">
+                        29 тамыз маңызы?
+                    </button>
+                </div>
+
+                <!-- Chat Input Form -->
+                <form id="chat-form" onsubmit="handleChatSubmit(event)" class="p-3 bg-panelbg border-t border-white/10 flex gap-2">
+                    <input type="text" id="chat-input" placeholder="Семей тарихы туралы сұрақ қойыңыз..." class="flex-1 bg-darkbg border border-white/20 px-4 py-2 text-xs text-white focus:outline-none focus:border-sand">
+                    <button type="submit" class="px-5 py-2 bg-sand text-black font-bold text-xs uppercase hover:bg-sand-light transition">
+                        Жіберу
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11: HISTORICAL DETECTIVE -->
+    <section id="detective" class="py-24 bg-panelbg border-t border-white/5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="text-center space-y-4">
+                <p class="text-sand text-xs font-semibold uppercase tracking-widest">Практикалық Зерттеу</p>
+                <h2 class="font-title text-3xl sm:text-5xl text-white font-bold">СЕН — ТАРИХШЫСЫҢ</h2>
+                <p class="text-gray-400 text-sm max-w-xl mx-auto">Тарихи детектив: Ұсынылған деректерді зерттеп, оқиғаны дәлелдейтін айғақты анықтаңыз.</p>
+                <div class="w-16 h-0.5 bg-sand mx-auto"></div>
+            </div>
+
+            <!-- Materials Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Material 1 -->
+                <div onclick="selectDetectiveMaterial('photo')" class="detective-card bg-cardbg p-6 border border-white/10 hover:border-sand cursor-pointer transition space-y-4">
+                    <div class="text-3xl text-sand"><i class="fa-solid fa-camera"></i></div>
+                    <h3 class="font-title text-base text-white font-bold">1. Мұрағаттық Фотосурет</h3>
+                    <p class="text-gray-400 text-xs">1949 жылғы ядролық саңырауқұлақ бұлтының түсірілімі.</p>
+                </div>
+
+                <!-- Material 2 -->
+                <div onclick="selectDetectiveMaterial('newspaper')" class="detective-card bg-cardbg p-6 border border-white/10 hover:border-sand cursor-pointer transition space-y-4">
+                    <div class="text-3xl text-sand"><i class="fa-solid fa-newspaper"></i></div>
+                    <h3 class="font-title text-base text-white font-bold">2. Газет Мақаласы</h3>
+                    <p class="text-gray-400 text-xs">1989 жылғы «Семей таңы» газетіндегі халықтық үндеу.</p>
+                </div>
+
+                <!-- Material 3 -->
+                <div onclick="selectDetectiveMaterial('doc')" class="detective-card bg-cardbg p-6 border border-white/10 hover:border-sand cursor-pointer transition space-y-4">
+                    <div class="text-3xl text-sand"><i class="fa-solid fa-file-signature"></i></div>
+                    <h3 class="font-title text-base text-white font-bold">3. Ресми Жарлық</h3>
+                    <p class="text-gray-400 text-xs">№409 Мемлекеттік жарлықтың түпнұсқа мәтіні (1991 ж.).</p>
+                </div>
+
+                <!-- Material 4 -->
+                <div onclick="selectDetectiveMaterial('map')" class="detective-card bg-cardbg p-6 border border-white/10 hover:border-sand cursor-pointer transition space-y-4">
+                    <div class="text-3xl text-sand"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <h3 class="font-title text-base text-white font-bold">4. Әскери Карта</h3>
+                    <p class="text-gray-400 text-xs">1960 жылдардағы полигон сызбасы мен қауіпті аймақтар.</p>
+                </div>
+            </div>
+
+            <!-- Material Detail Box -->
+            <div id="detective-detail" class="bg-cardbg p-8 gold-border space-y-4">
+                <p class="text-xs text-sand font-mono uppercase">Таңдалған материалды талдау:</p>
+                <h3 id="det-title" class="font-title text-xl text-white font-bold">Материалды таңдаңыз</h3>
+                <p id="det-desc" class="text-gray-300 text-xs leading-relaxed">Жоғарыдағы 4 тарихи айғақтың бірін басып, талдау жасаңыз.</p>
+            </div>
+
+            <!-- 5-Step Analysis Scheme -->
+            <div class="space-y-6 pt-6">
+                <h3 class="font-title text-xl text-white text-center font-bold">«ДЕРЕКТІ ТАЛДАУ» — 5 ҚАДАМДЫҚ СХЕМА</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-5 gap-4 text-center">
+                    <div class="bg-cardbg p-4 border border-sand/30 space-y-2">
+                        <span class="text-sand font-bold text-lg">1</span>
+                        <h4 class="text-xs font-bold text-white">Авторын анықта</h4>
+                        <p class="text-[11px] text-gray-400">Кім жазды немесе жасады?</p>
+                    </div>
+                    <div class="bg-cardbg p-4 border border-sand/30 space-y-2">
+                        <span class="text-sand font-bold text-lg">2</span>
+                        <h4 class="text-xs font-bold text-white">Уақытын анықта</h4>
+                        <p class="text-[11px] text-gray-400">Қай кезеңде пайда болды?</p>
+                    </div>
+                    <div class="bg-cardbg p-4 border border-sand/30 space-y-2">
+                        <span class="text-sand font-bold text-lg">3</span>
+                        <h4 class="text-xs font-bold text-white">Мақсатын анықта</h4>
+                        <p class="text-[11px] text-gray-400">Не үшін жасалған?</p>
+                    </div>
+                    <div class="bg-cardbg p-4 border border-sand/30 space-y-2">
+                        <span class="text-sand font-bold text-lg">4</span>
+                        <h4 class="text-xs font-bold text-white">Мән-жайын анықта</h4>
+                        <p class="text-[11px] text-gray-400">Қандай жағдайда өтті?</p>
+                    </div>
+                    <div class="bg-cardbg p-4 border border-sand/30 space-y-2">
+                        <span class="text-sand font-bold text-lg">5</span>
+                        <h4 class="text-xs font-bold text-white">Салыстыр</h4>
+                        <p class="text-[11px] text-gray-400">Басқа дерекпен сәйкес пе?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 12: HISTORICAL LABORATORY -->
+    <section id="lab" class="py-24 bg-darkbg border-t border-white/5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <div class="text-center space-y-4">
+                <p class="text-sand text-xs font-semibold uppercase tracking-widest">Тиянақты зерттеу</p>
+                <h2 class="font-title text-3xl sm:text-4xl text-white font-bold">ДЕРЕККЕ СЕНУГЕ БОЛА МА?</h2>
+                <p class="text-gray-400 text-sm">Тарихи құжаттың сенімділік деңгейін есептейтін интерактивті модуль.</p>
+                <div class="w-16 h-0.5 bg-sand mx-auto"></div>
+            </div>
+
+            <!-- Lab Form -->
+            <div class="bg-cardbg p-8 gold-border space-y-6">
+                <div class="border-b border-white/10 pb-4">
+                    <span class="text-xs text-sand font-bold uppercase">Зерттелетін нысан:</span>
+                    <h3 class="font-title text-lg text-white font-bold mt-1">«КСРО Министрлер Кеңесінің №4050 құпия қаулысы (1947 ж.)»</h3>
+                </div>
+
+                <form onsubmit="calculateReliability(event)" class="space-y-4 text-xs text-gray-300">
+                    <div class="space-y-2">
+                        <label class="block font-semibold text-white">1. Авторы белгілі ме?</label>
+                        <select id="q1" class="w-full bg-panelbg border border-white/20 p-2 text-white">
+                            <option value="20">Иә, мемлекеттік ресми орган (КСРО Үкіметі)</option>
+                            <option value="10">Ішінара белгілі</option>
+                            <option value="0">Аты-жөнсіз / Белгісіз</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block font-semibold text-white">2. Қай жылы жасалды?</label>
+                        <select id="q2" class="w-full bg-panelbg border border-white/20 p-2 text-white">
+                            <option value="20">Оқиға орын алған кезеңде (1947 ж.)</option>
+                            <option value="10">Оқиғадан кейін бірнеше жылдан соң</option>
+                            <option value="0">Уақыты көрсетілмеген</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block font-semibold text-white">3. Қандай мақсатпен жасалды?</label>
+                        <select id="q3" class="w-full bg-panelbg border border-white/20 p-2 text-white">
+                            <option value="20">Ресми әскери-стратегиялық бұйрық</option>
+                            <option value="10">Насихаттық сипаттағы ақпарат</option>
+                            <option value="5">Жеке күнделік немесе естелік</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block font-semibold text-white">4. Тарихи жағдайға сәйкес пе?</label>
+                        <select id="q4" class="w-full bg-panelbg border border-white/20 p-2 text-white">
+                            <option value="20">Иә, Қырғи-қабақ соғыс кезеңінің деректеріне толық сәйкес</option>
+                            <option value="5">Күмәнді тұстары бар</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block font-semibold text-white">5. Басқа деректермен растала ма?</label>
+                        <select id="q5" class="w-full bg-panelbg border border-white/20 p-2 text-white">
+                            <option value="20">Иә, мұрағаттық айғақтармен және куәгерлермен расталады</option>
+                            <option value="10">Тек бір ақпарат көзінде бар</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 bg-sand text-black font-bold uppercase tracking-widest hover:bg-sand-light transition mt-4">
+                        [ ДЕРЕКТІҢ СЕНІМДІЛІГІН ЕСЕПТЕУ ]
+                    </button>
+                </form>
+
+                <!-- Reliability Scale Gauge -->
+                <div id="reliability-result" class="hidden pt-6 border-t border-white/10 space-y-4">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="font-bold text-white">ДЕРЕКТІҢ СЕНІМДІЛІГІ:</span>
+                        <span id="rel-score" class="font-title text-xl text-sand font-bold">0%</span>
+                    </div>
+
+                    <div class="w-full h-4 bg-panelbg border border-white/20 rounded-full overflow-hidden">
+                        <div id="rel-bar" class="h-full bg-sand transition-all duration-1000 w-0"></div>
+                    </div>
+
+                    <p id="rel-verdict" class="text-xs text-gray-300 italic"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 13: TODAY'S HISTORICAL MEMORY -->
+    <section class="py-24 bg-panelbg border-t border-white/5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="text-center space-y-4">
+                <p class="text-sand text-xs font-semibold uppercase tracking-widest">Сабақтастық</p>
+                <h2 class="font-title text-3xl sm:text-5xl text-white font-bold">ТАРИХ АЯҚТАЛДЫ МА?</h2>
+                <div class="w-16 h-0.5 bg-sand mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-cardbg p-8 border-l-4 border-sand space-y-4">
+                    <h3 class="font-title text-xl text-sand font-bold">ТАРИХ</h3>
+                    <p class="text-gray-300 text-xs leading-relaxed">
+                        Полигонның жабылуы сынақтардың аяқталғанын білдірді. Бірақ ол даланың, елдің, мемлекеттің даму жолында өшпес із қалдырды.
+                    </p>
+                </div>
+
+                <div class="bg-cardbg p-8 border-l-4 border-crimson space-y-4">
+                    <h3 class="font-title text-xl text-crimson font-bold">ЖАД</h3>
+                    <p class="text-gray-300 text-xs leading-relaxed">
+                        Ауыр тарихи сабақ Қазақстан халқының ұжымдық жадында, мұражай көрмелерінде және ғылыми еңбектерде сақталуда.
+                    </p>
+                </div>
+
+                <div class="bg-cardbg p-8 border-l-4 border-white space-y-4">
+                    <h3 class="font-title text-xl text-white font-bold">БОЛАШАҚ</h3>
+                    <p class="text-gray-300 text-xs leading-relaxed">
+                        Ядросыз әлем құру бастамасы — Қазақстанның жаһандық аренадағы негізгі миссияларының бірі болып қала береді.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 14: CONCLUSION -->
+    <section class="py-24 bg-darkbg border-t border-white/5 px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-4xl mx-auto space-y-8">
+            <h2 class="font-title text-3xl sm:text-5xl font-black text-white leading-tight">
+                «ТАРИХТЫ ҰМЫТПАУ — <br>
+                <span class="text-sand">БОЛАШАҚТЫ ТҮСІНУ.»</span>
+            </h2>
+
+            <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto font-light leading-relaxed">
+                Тарихты оқыма. Тарихты зертте. Деректі тексер. Қорытындыны өзің жаса.
+            </p>
+
+            <div>
+                <a href="#hero" class="inline-block px-10 py-4 bg-sand text-black font-bold text-xs uppercase tracking-widest hover:bg-sand-light transition shadow-lg">
+                    [ ҚАЙТА ЗЕРТТЕУ ]
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 15: SOURCES -->
+    <section id="sources" class="py-24 bg-panelbg border-t border-white/5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center space-y-4">
+                <p class="text-sand text-xs font-semibold uppercase tracking-widest">Ғылыми негіз</p>
+                <h2 class="font-title text-2xl sm:text-4xl text-white font-bold">ПАЙДАЛАНЫЛҒАН ДЕРЕККӨЗДЕР</h2>
+                <div class="w-16 h-0.5 bg-sand mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-xs">
+                <!-- Source 1 -->
+                <div class="bg-cardbg p-6 border border-white/10 space-y-3">
+                    <span class="text-sand font-bold block uppercase">Мұрағаттық құжаттар</span>
+                    <p class="text-gray-300">ҚР Орталық мемлекеттік мұрағаты. Семей ядролық полигонына қатысты №409 Жарлық түпнұсқасы.</p>
+                    <button onclick="openModal('src-archive')" class="text-sand underline hover:text-white">
+                        [ ДЕРЕККӨЗГЕ ӨТУ ]
+                    </button>
+                </div>
+
+                <!-- Source 2 -->
+                <div class="bg-cardbg p-6 border border-white/10 space-y-3">
+                    <span class="text-sand font-bold block uppercase">Ғылыми зерттеулер</span>
+                    <p class="text-gray-300">ҚР Ұлттық ядролық орталығының радиоэкологиялық зерттеулерінің ресми есептері.</p>
+                    <button onclick="openModal('src-science')" class="text-sand underline hover:text-white">
+                        [ ДЕРЕККӨЗГЕ ӨТУ ]
+                    </button>
+                </div>
+
+                <!-- Source 3 -->
+                <div class="bg-cardbg p-6 border border-white/10 space-y-3">
+                    <span class="text-sand font-bold block uppercase">Ресми деректер</span>
+                    <p class="text-gray-300">Қазақстан Республикасы Денсаулық сақтау министрлігінің медициналық статистикасы.</p>
+                    <button onclick="openModal('src-official')" class="text-sand underline hover:text-white">
+                        [ ДЕРЕККӨЗГЕ ӨТУ ]
+                    </button>
+                </div>
+
+                <!-- Source 4 -->
+                <div class="bg-cardbg p-6 border border-white/10 space-y-3">
+                    <span class="text-sand font-bold block uppercase">Карталар</span>
+                    <p class="text-gray-300">ҚР ҰЯО Радиология және радиациялық қауіпсіздік институтының топографиялық карталары.</p>
+                    <button onclick="openModal('src-maps')" class="text-sand underline hover:text-white">
+                        [ ДЕРЕККӨЗГЕ ӨТУ ]
+                    </button>
+                </div>
+
+                <!-- Source 5 -->
+                <div class="bg-cardbg p-6 border border-white/10 space-y-3">
+                    <span class="text-sand font-bold block uppercase">Фотосуреттер</span>
+                    <p class="text-gray-300">ҚР Мемлекеттік кинофотоқұжаттар мен дыбыс жазбалары мұрағатының материалдары.</p>
+                    <button onclick="openModal('src-photo')" class="text-sand underline hover:text-white">
+                        [ ДЕРЕККӨЗГЕ ӨТУ ]
+                    </button>
+                </div>
+
+                <!-- Source 6 -->
+                <div class="bg-cardbg p-6 border border-white/10 space-y-3">
+                    <span class="text-sand font-bold block uppercase">Халықаралық деректер</span>
+                    <p class="text-gray-300">МАГАТЭ (IAEA) халықаралық агенттігінің Семей полигонын мониторингтеу есептері.</p>
+                    <button onclick="openModal('src-iaea')" class="text-sand underline hover:text-white">
+                        [ ДЕРЕККӨЗГЕ ӨТУ ]
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 16: FOOTER -->
+    <footer class="py-12 bg-[#060a14] border-t border-white/10 text-xs text-gray-500 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-1 text-center md:text-left">
+                <span class="font-title text-sand font-bold text-sm block">«СЕМЕЙ: ТАРИХ ІЗІ — ҰРПАҚ ЖАДЫ»</span>
+                <p>Тарих пәні мұғалімдерінің байқауына ұсынылатын «Тарихи мәселе бойынша цифрлық өнім»</p>
+                <p class="text-gray-600">© 2026 барлық құқықтар қорғалған.</p>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="#hero" class="px-6 py-3 border border-sand/40 text-sand hover:bg-sand hover:text-black font-semibold uppercase tracking-wider transition">
+                    [ ↑ БАС БЕТКЕ ]
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GLOBAL MODAL CONTAINER -->
+    <div id="global-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-cardbg gold-border max-w-lg w-full p-6 space-y-4 relative text-xs">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg font-bold">&times;</button>
+            <h3 id="modal-title" class="font-title text-lg text-sand font-bold"></h3>
+            <div id="modal-body" class="text-gray-300 space-y-2 leading-relaxed max-h-[60vh] overflow-y-auto"></div>
+            <div class="pt-4 border-t border-white/10 flex justify-end">
+                <button onclick="closeModal()" class="px-4 py-2 bg-sand text-black font-bold uppercase">Жабу</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CONTROLLERS -->
+    <script>
+        // Video Gallery Player Logic
+        function playVideo(ytId, title, desc, badge, task) {
+            const iframe = document.getElementById('main-video-iframe');
+            iframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&enablejsapi=1`;
+            
+            document.getElementById('video-title').innerText = title;
+            document.getElementById('video-desc').innerText = desc;
+            document.getElementById('video-badge').innerText = badge;
+            document.getElementById('video-task').innerText = task;
+
+            // Highlight selected card
+            document.querySelectorAll('.v-card').forEach(card => {
+                card.classList.remove('border-sand', 'active');
+                card.classList.add('border-white/10');
+            });
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.remove('border-white/10');
+                event.currentTarget.classList.add('border-sand', 'active');
+            }
+
+            // Scroll smoothly to player on mobile
+            if (window.innerWidth < 1024) {
+                document.getElementById('videos').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Timeline Logic
+        const timelineData = {
+            '1949': {
+                title: "1949 ЖЫЛ: АЛҒАШҚЫ ЯДРОЛЫҚ СЫНАҚ",
+                badge: "Стратегиялық кезең",
+                text: "29 тамыз таңғы сағат 07:00-де Семей полигонында КСРО-ның алғашқы атомдық «RDS-1» жарылысы өтті. Жарылыс қуаты 22 килотоннаны құрады. Қоршаған ортаға және халыққа радиациялық зардаптың ең ауыр әсері тиген кезең."
+            },
+            '1950': {
+                title: "1950–1980 ЖЖ: ҚАРҚЫНДЫ СЫНАҚТАР ДӘУІРІ",
+                badge: "Әуе және Жер асты сынақтары",
+                text: "1953 жылы алғашқы сутегі бомбасы (RDS-6s), ал 1955 жылы термоядролық бомба сыналды. 1963 жылғы Мәскеу келісімінен кейін сынақтар Дегелең мен Балапан алаңдарындағы жер асты оқпандарына көшірілді."
+            },
+            '1989': {
+                title: "1989 ЖЫЛ: «НЕВАДА–СЕМЕЙ» ҚОЗҒАЛЫСЫ",
+                badge: "Азаматтық қарсылық",
+                text: "Олжас Сүлейменовтің бастамасымен құрылған халықаралық ядроға қарсы қозғалыс. Халықтық жиындар мен 2 миллионнан астам қол жинау нәтижесінде жоспарланған 18 сынақтың 11-і тоқтатылды."
+            },
+            '1991': {
+                title: "29 ТАМЫЗ 1991 ЖЫЛ: ПОЛИГОННЫҢ МӘҢГІЛІККЕ ЖАБЫЛУЫ",
+                badge: "Тарихи Ұлы Шешім",
+                text: "Қазақ КСР Президенті Н.Ә. Назарбаевтың №409 Жарлығымен Семей полигоны жабылды. Бұл адамзат тарихындағы халық еркімен полигонды жабудың алғашқы үлгісі болды."
+            }
+        };
+
+        function showTimeline(year) {
+            document.querySelectorAll('.timeline-tab').forEach(b => {
+                b.classList.remove('bg-sand', 'text-black');
+                b.classList.add('bg-cardbg', 'text-white');
+            });
+            const activeBtn = document.getElementById(`tbtn-${year}`);
+            if(activeBtn) {
+                activeBtn.classList.remove('bg-cardbg', 'text-white');
+                activeBtn.classList.add('bg-sand', 'text-black');
+            }
+
+            const data = timelineData[year];
+            const contentBox = document.getElementById('timeline-content');
+            contentBox.innerHTML = `
+                <div class="space-y-4 w-full">
+                    <span class="px-3 py-1 bg-sand/10 border border-sand/40 text-sand text-[10px] uppercase font-bold inline-block">${data.badge}</span>
+                    <h3 class="font-title text-2xl text-white font-bold">${data.title}</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">${data.text}</p>
+                </div>
+            `;
+        }
+        showTimeline('1949');
+
+        // Digital Map Logic
+        const mapData = {
+            'semey': {
+                name: "Семей қаласы",
+                role: "Мәдени және тарихи орталық",
+                info: "Полигон орталығынан 130 шақырым қашықтықта орналасқан. Радиоактивті бұлттардың жиі өтуіне байланысты қала тұрғындары айтарлықтай зардап шекті.",
+                img: "🏙"
+            },
+            'kurchatov': {
+                name: "Курчатов қаласы (Семей-21)",
+                role: "Полигонның әскери және ғылыми басқару орталығы",
+                info: "Жабық құпия қала. КСРО-ның ең үздік физик-ядерщиктері мен әскери басшылығы орналасқан ғылыми-зерттеу базасы.",
+                img: "🏢"
+            },
+            'degelen': {
+                name: "Дегелең таулы массиві",
+                role: "Жер асты сынақтарының негізгі полигоны",
+                info: "200-ден астам жер асты оқпандарында жер асты ядролық жарылыстары жүргізілген. Бүгінде радиациялық қауіпсіздігі қатаң бақыланады.",
+                img: "⛰"
+            },
+            'shagan': {
+                name: "Шаған (Атом көлі)",
+                role: "Өнеркәсіптік ядролық жарылыс нысаны",
+                info: "1965 жылы жер асты термоядролық жарылысы нәтижесінде пайда болған жасанды су қоймасы. Радиоактивті ластану деңгейі жоғары.",
+                img: "🌊"
+            },
+            'polygon': {
+                name: "Семей ядролық полигоны аумағы",
+                role: "18 500 шаршы шақырым алаң",
+                info: "Балапан, Дегелең, Мұржық және Тасбұлақ алаңдарын қамтитын, 40 жыл бойы ядролық қару сыналған географиялық аймақ.",
+                img: "☢"
+            }
+        };
+
+        function selectMapLocation(key) {
+            const item = mapData[key];
+            const panel = document.getElementById('map-info-panel');
+            panel.innerHTML = `
+                <div class="space-y-4">
+                    <div class="w-12 h-12 bg-sand/10 border border-sand text-sand flex items-center justify-center text-2xl font-bold">
+                        ${item.img}
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-sand uppercase tracking-wider block">${item.role}</span>
+                        <h3 class="font-title text-xl text-white font-bold">${item.name}</h3>
+                    </div>
+                    <p class="text-gray-300 text-xs leading-relaxed">${item.info}</p>
+                    <div class="p-3 bg-panelbg border border-white/10 text-[11px] text-gray-400">
+                        <i class="fa-solid fa-circle-info text-sand mr-1"></i> Дереккөз: ҚР Ұлттық ядролық орталығының географиялық картасы.
+                    </div>
+                </div>
+            `;
+        }
+        selectMapLocation('semey');
+
+        // Quiz Logic
+        const quizQuestions = [
+            {
+                statement: "Семей полигонының тарихы тек әскери тарихпен шектеледі.",
+                isFact: false,
+                explain: "МИФ! Семей полигонының тарихы — сонымен бірге экология, медицина, халықаралық дипломатия және азаматтық қарсылық тарихы."
+            },
+            {
+                statement: "Семей полигонында 400-ден астам ядролық сынақ жасалды.",
+                isFact: true,
+                explain: "ДЕРЕК! Ресми мұрағаттық деректер бойынша 456 ядролық сынақ жүргізілді."
+            },
+            {
+                statement: "1991 жылғы 29 тамызда Семей полигонын жабу туралы Жарлыққа қол қойылды.",
+                isFact: true,
+                explain: "ДЕРЕК! Президент Н. Назарбаевтың №409 Жарлығымен полигон ресми жабылды."
+            },
+            {
+                statement: "«Невада-Семей» қозғалысын тек әскери мамандар басқарды.",
+                isFact: false,
+                explain: "МИФ! Қозғалысты белгілі ақын, қоғам қайраткері Олжас Сүлейменов басқарған халықтық ұйым болды."
+            },
+            {
+                statement: "БҰҰ 29 тамызды «Ядролық сынақтарға қарсы іс-қимылдың халықаралық күні» деп бекітті.",
+                isFact: true,
+                explain: "ДЕРЕК! 2009 жылы БҰҰ Бас Ассамблеясы Қазақстанның бастамасымен осы қарарды қабылдады."
+            }
+        ];
+
+        let quizIndex = 0;
+        let quizScore = 0;
+
+        function loadQuizQuestion() {
+            const q = quizQuestions[quizIndex];
+            document.getElementById('quiz-current-num').innerText = quizIndex + 1;
+            document.getElementById('quiz-score').innerText = quizScore;
+            document.getElementById('quiz-statement').innerText = q.statement;
+            
+            const fb = document.getElementById('quiz-feedback');
+            fb.classList.add('hidden');
+            document.getElementById('quiz-actions').classList.remove('hidden');
+            document.getElementById('quiz-next-btn-wrap').classList.add('hidden');
+        }
+
+        function answerQuiz(userAns) {
+            const q = quizQuestions[quizIndex];
+            const fb = document.getElementById('quiz-feedback');
+            
+            if (userAns === q.isFact) {
+                quizScore++;
+                fb.className = "p-4 border rounded text-xs leading-relaxed bg-green-950/40 border-green-500/50 text-green-300";
+                fb.innerHTML = `<strong>✓ ДҰРЫС!</strong> ${q.explain}`;
+            } else {
+                fb.className = "p-4 border rounded text-xs leading-relaxed bg-red-950/40 border-red-500/50 text-red-300";
+                fb.innerHTML = `<strong>✗ ҚАТЕ!</strong> ${q.explain}`;
+            }
+            
+            fb.classList.remove('hidden');
+            document.getElementById('quiz-actions').classList.add('hidden');
+            document.getElementById('quiz-next-btn-wrap').classList.remove('hidden');
+            document.getElementById('quiz-score').innerText = quizScore;
+        }
+
+        function nextQuizQuestion() {
+            quizIndex++;
+            if (quizIndex < quizQuestions.length) {
+                loadQuizQuestion();
+            } else {
+                document.getElementById('quiz-container').classList.add('hidden');
+                document.getElementById('quiz-result').classList.remove('hidden');
+                document.getElementById('final-score').innerText = quizScore;
+                
+                let evalText = "Тарихты қайта қарауды ұсынамыз.";
+                if(quizScore >= 4) evalText = "Керемет! Сіз Семей полигонының тарихын өте жақсы білесіз.";
+                else if(quizScore >= 2) evalText = "Жақсы нәтиже! Негізгі тарихи фактілермен таныссыз.";
+                document.getElementById('quiz-eval-text').innerText = evalText;
+            }
+        }
+
+        function restartQuiz() {
+            quizIndex = 0;
+            quizScore = 0;
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            loadQuizQuestion();
+        }
+        loadQuizQuestion();
+
+        // AI Historian Simulation Logic
+        const aiKnowledge = {
+            "ашылды": "Семей ядролық полигоны КСРО Министрлер Кеңесінің 1947 жылғы 21 тамыздағы № 2939-955сс құпия қаулысымен ашылды. Ресми атауы — КСРО Қорғаныс министрлігінің 2-ші мемлекеттік оқу-жаттығу полигоны.",
+            "алғашқы": "Алғашқы ядролық сынақ 1949 жылы 29 тамызда таңғы сағат 07:00-де өтті. Қуаты 22 килотонна болатын плутонийлік «RDS-1» атом бомбасы сыналды.",
+            "невада": "«Невада–Семей» қозғалысы 1989 жылы құрылып, Семейдегі 18 сынақтың 11-ін тоқтатуға ықпал етті. Ол халықаралық ядроға қарсы альянс қалыптастырды.",
+            "жабылды": "Полигон 1991 жылғы 29 тамызда Қазақ КСР Президенті Н.Ә. Назарбаевтың №409 Жарлығымен жабылды.",
+            "29 тамыз": "29 тамыз — тарихи дата. 1949 ж. алғашқы сынақ өтті, 1991 ж. полигон жабылды, ал 2009 жылдан бастап БҰҰ бұл күнді «Ядролық сынақтарға қарсы халықаралық күн» деп бекітті."
+        };
+
+        function askAI(promptText) {
+            document.getElementById('chat-input').value = promptText;
+            handleChatSubmit(new Event('submit'));
+        }
+
+        function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('chat-input');
+            const query = input.value.trim();
+            if (!query) return;
+
+            const box = document.getElementById('chat-box');
+
+            // Append User Question
+            box.innerHTML += `
+                <div class="flex items-start justify-end gap-3">
+                    <div class="bg-sand/20 border border-sand/40 p-3 max-w-[85%] text-xs text-white">
+                        ${query}
+                    </div>
+                </div>
+            `;
+
+            // Process AI Response
+            let response = "Кешіріңіз, бұл бойынша мұрағатта дерек тексерілуде. 'Семей полигоны қашан ашылды?', 'Невада-Семей', '29 тамыз' туралы сұрап көріңіз.";
+            const qLower = query.toLowerCase();
+            
+            for (let key in aiKnowledge) {
+                if (qLower.includes(key)) {
+                    response = aiKnowledge[key];
+                    break;
+                }
+            }
+
+            setTimeout(() => {
+                box.innerHTML += `
+                    <div class="flex items-start gap-3">
+                        <div class="w-7 h-7 rounded-full bg-sand/20 text-sand flex items-center justify-center text-xs font-bold flex-shrink-0 mt-1">ЖИ</div>
+                        <div class="bg-panelbg border border-white/10 p-3 max-w-[85%] text-xs text-gray-200 space-y-2">
+                            <p>${response}</p>
+                            <button onclick="openModal('src-official')" class="text-[10px] text-sand underline block pt-1">
+                                [ ДЕРЕККӨЗДІ ТЕКСЕР ]
+                            </button>
+                        </div>
+                    </div>
+                `;
+                box.scrollTop = box.scrollHeight;
+            }, 400);
+
+            input.value = '';
+            box.scrollTop = box.scrollHeight;
+        }
+
+        // Historical Detective Logic
+        const detectiveData = {
+            'photo': {
+                title: "1. 1949 ЖЫЛҒЫ МҰРАҒАТТЫҚ ФОТОСУРЕТ",
+                desc: "Семей полигонындағы алғашқы «RDS-1» жарылысының бұлты. Фотосурет КСРО Атом жобасының ресми әскери деректі киноқұжатынан алынған. Сынақтың ашық әуеде өткенін айғақтайды."
+            },
+            'newspaper': {
+                title: "2. «СЕМЕЙ ТАҢЫ» ГАЗЕТІ (1989 Ж.)",
+                desc: "«Невада-Семей» қозғалысының халықтық үндеуі жарияланған баспасөз беті. Бұл — қоғамдық сананың оянуы мен азаматтық қарсылықтың жазбаша айғағы."
+            },
+            'doc': {
+                title: "3. №409 МЕМЛЕКЕТТІК ЖАРЛЫҚ (1991 Ж.)",
+                desc: "Семей полигонын жабу туралы ресми заңнамалық акт. Мемлекеттік заңдық күші бар ең жоғары деңгейдегі тарихи құжат."
+            },
+            'map': {
+                title: "4. ӘСКЕРИ СЫЗБА-КАРТА (1960 Ж.)",
+                desc: "Полигон алаңдары (Дегелең, Шаған, Балапан) мен сыртқы шекаралары белгіленген құпия әскери карта."
+            }
+        };
+
+        function selectDetectiveMaterial(key) {
+            const item = detectiveData[key];
+            document.getElementById('det-title').innerText = item.title;
+            document.getElementById('det-desc').innerText = item.desc;
+        }
+
+        // Reliability Laboratory Calculation
+        function calculateReliability(e) {
+            e.preventDefault();
+            const q1 = parseInt(document.getElementById('q1').value);
+            const q2 = parseInt(document.getElementById('q2').value);
+            const q3 = parseInt(document.getElementById('q3').value);
+            const q4 = parseInt(document.getElementById('q4').value);
+            const q5 = parseInt(document.getElementById('q5').value);
+
+            const total = q1 + q2 + q3 + q4 + q5;
+
+            document.getElementById('reliability-result').classList.remove('hidden');
+            document.getElementById('rel-score').innerText = `${total}%`;
+            document.getElementById('rel-bar').style.width = `${total}%`;
+
+            let verdict = "Дерек күмәнді, қосымша тексеруді талап етеді.";
+            if (total >= 80) verdict = "Жоғары сенімділік! Құжат мұрағаттық айғақтармен және ресми фактілермен толық расталады.";
+            else if (total >= 50) verdict = "Орташа сенімділік. Басқа тарихи деректермен салыстыру қажет.";
+
+            document.getElementById('rel-verdict').innerText = verdict;
+        }
+
+        // August Details Toggle
+        function toggleAugustDetails() {
+            const el = document.getElementById('august-details');
+            el.classList.toggle('hidden');
+        }
+
+        // Modal Handling
+        function openModal(key) {
+            const modal = document.getElementById('global-modal');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+
+            const contentMap = {
+                'source-1949': {
+                    title: "Дереккөз: 1949 жылғы алғашқы сынақ",
+                    body: "КСРО Атом жобасының мұрағаттық материалдары. Мәскеу, Атом өнеркәсібі мұражайы деректері."
+                },
+                'source-456': {
+                    title: "Дереккөз: 456 ядролық сынақ",
+                    body: "ҚР Ұлттық ядролық орталығының (Курчатов қ.) ресми ғылыми басылымы: «Семей ядролық полигоны: сынақтар шежіресі»."
+                },
+                'source-1991': {
+                    title: "Дереккөз: №409 Жарлық",
+                    body: "ҚР Орталық Мемлекеттік Мұрағаты, 1991 жылғы 29 тамыздағы Президент Жарлығының түпнұсқа көшірмесі."
+                },
+                'person-resident': {
+                    title: "Тұрғындар естелігі",
+                    body: "Семей, Абай, Жанасемей аудандарының тұрғындарынан жиналған этнографиялық естеліктер жинағы."
+                },
+                'person-scientist': {
+                    title: "И.В. Курчатов жазбалары",
+                    body: "КСРО Ғылым Академиясының академигі И. Курчатовтың 1949-1953 жылдардағы ғылыми күнделіктері."
+                },
+                'person-doctor': {
+                    title: "Бахия Атшабаровтың еңбектері",
+                    body: "Қазақ өлкелік патология институтының радиобиологиялық құпия зерттеулерінің мұрағаты."
+                },
+                'person-activist': {
+                    title: "«Невада-Семей» мұрағаты",
+                    body: "1989 жылғы Азаматтық қарсылық қозғалысының қарарлары мен жазбаша хаттамалары."
+                },
+                'src-archive': { title: "Ресми мұрағат", body: "Қазақстан Республикасы Орталық Мемлекеттік Мұрағаты. Мемлекеттік қор №1450." },
+                'src-science': { title: "Ғылыми база", body: "ҚР Ұлттық ядролық орталығының Радиациялық қауіпсіздік және экология институты." },
+                'src-official': { title: "Медициналық мұрағат", body: "ҚР Денсаулық сақтау министрлігінің Семей аймағы бойынша статистикалық қоры." },
+                'src-maps': { title: "Географиялық карталар", body: "ҚР НЯЦ Курчатов топографиялық және радиологиялық карталар мұрағаты." },
+                'src-photo': { title: "Кинофотоқұжаттар", body: "ҚР Орталық кинофотоқұжаттар және дыбыс жазбалары мемлекеттік мұрағаты." },
+                'src-iaea': { title: "IAEA / МАГАТЭ", body: "International Atomic Energy Agency Semipalatinsk Preliminary Assessment Report (1998)." }
+            };
+
+            const item = contentMap[key] || { title: "Ақпарат", body: "Дереккөз жүктелуде..." };
+            title.innerText = item.title;
+            body.innerText = item.body;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('global-modal').classList.add('hidden');
+        }
+
+        // Mobile Menu Logic
+        document.getElementById('menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
